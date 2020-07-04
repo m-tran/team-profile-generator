@@ -20,3 +20,5 @@ Employee.prototype.getEmail = function() {
 Employee.prototype.getRole = function() {
     returns("Employee");
 };
+
+module.exports = Employee; 
