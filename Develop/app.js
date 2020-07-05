@@ -16,23 +16,39 @@ const render = require("./lib/htmlRenderer");
 inquirer.prompt([
     {
         type: "input",
-        message: "What is your name?",
+        message: "What is the employee's name?",
         name: "name",
     },
     {
-        type: "list",
-        message: "What is your role?",
-        choices: (["Employee", "Manager", "Engineer", "Intern"]),
+        type: "input",
+        message: "What is the employee's id?",
+        name: "id",
     },
     {
-
+        type: "input",
+        message: "What is the employee's email?",
+        name: "email",
     },
-]).then()
+    {
+        type: "list",
+        message: "What is the employee's role?",
+        name: "role",
+        choices: (["Manager", "Engineer", "Intern"]),
+    },
+    {
+        type: "input",
+        message: "What is the manager's office number?",
+        name: "officeNumber",
+        when: function (input) {
+            return input.role === "Manager"; 
+        }
+    },
+]).then( () => {
+    console.log("success");
+})
 .catch(err => {
     if (err) throw err;
 });
-
-
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
