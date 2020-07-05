@@ -85,7 +85,11 @@ const createTeam = () => {
         if (input.again === "yes") {
             return createTeam();
         }
-        render(team);
+        data = render(team);
+        fs.writeFileSync(outputPath, data, (err) => {
+            if (err) throw err;
+            console.log("Team Page has been rendered");
+        })
         console.log("success");
     })
     .catch((err) => {
