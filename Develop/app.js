@@ -43,6 +43,22 @@ inquirer.prompt([
             return input.role === "Manager"; 
         }
     },
+    {
+        type: "input",
+        message: "What is the engineer's GitHub username?",
+        name: "github",
+        when: function (input) {
+            return input.role === "Engineer";
+        }
+    },
+    {
+        type: "input",
+        message: "What is the intern's school?",
+        name: "school",
+        when: function (input) {
+            return input.role === "Intern";
+        }
+    },
 ]).then( () => {
     console.log("success");
 })
